@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nazar Gayrimenkul</title>
+<!-- FontAwesome fallback ikonları için (sadece yedek / renkli ikonlar buradan geliyor) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f4f6f8; color: #333; }
+/* HEADER */
+header { background-color: #ffffff; color: #0A1F44; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.logo-section { display: flex; align-items: center; }
+.logo-section img { width: 100px; margin-right: 12px; height: auto; }
+.logo-section h1 { font-size: 24px; color: #0A1F44; margin: 0; font-weight: bold; }
+nav { display: flex; align-items: center; }
+nav a { text-decoration: none; color: #0A1F44; margin: 0 15px; font-weight: 500; }
+nav a:hover { color: #1E90FF; }
+.social-icons img { width: 28px; margin-left: 12px; cursor: pointer; }
+
+/* küçük ek CSS: fallback ikonları görsel boyutuna yakın göstermek için */
+.social-icons i { width: 28px; margin-left: 12px; cursor: pointer; font-size: 22px; vertical-align: middle; color: #0A1F44; }
+
+/* İLETİŞİM kutusundaki social ikonları (oradakiler biraz daha büyük) */
+.iletisim .social-icons img { width: 36px; margin: 0 10px; vertical-align: middle; cursor: pointer; }
+.iletisim .social-icons i { font-size: 28px; margin: 0 10px; vertical-align: middle; cursor: pointer; color: #0A1F44; }
+
+/* ANA BAŞLIK */
+.main-title { text-align: center; font-size: 36px; font-weight: bold; color: #0A1F44; margin-top: 40px; }
+
+/* İLANLAR */
+.ilan-container { display: flex; justify-content: space-around; flex-wrap: wrap; margin: 40px auto; max-width: 1200px; }
+.ilan-box { background-color: #ffffff; width: 320px; border-radius: 12px; padding: 25px; margin: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transition: 0.3s; border-top: 6px solid #1E90FF; }
+.ilan-box:hover { transform: translateY(-5px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+.ilan-box h2 { color: #1E90FF; text-align: center; margin-bottom: 15px; font-size: 22px; }
+.ilan-box ul { list-style: none; padding: 0; font-size: 16px; }
+.ilan-box li { padding: 6px 0; color: #0A1F44; }
+.ilan-box li span { color: #555; font-size: 14px; }
+
+/* VITRIN */
+.vitrin-wrapper { position: relative; max-width: 1200px; margin: 20px auto; }
+.vitrin-container { display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 15px; }
+.vitrin-item { flex: 0 0 220px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 10px; text-align: center; transition: transform 0.3s; cursor: pointer; }
+.vitrin-item img { width: 100%; border-radius: 8px; margin-bottom: 8px; }
+.vitrin-indicators { text-align: center; margin-top: 10px; }
+.vitrin-indicators span { display: inline-block; width: 25px; height: 25px; line-height: 25px; margin: 0 5px; background-color: #ccc; border-radius: 50%; cursor: pointer; transition: 0.3s; font-weight: bold; color: #333; }
+.vitrin-indicators span:hover, .vitrin-indicators span.active { background-color: #1E90FF; color: #fff; }
+
+/* HARİTA */
+.harita { text-align: center; margin: 30px 0; }
+.harita iframe { width: 80%; max-width: 800px; height: 300px; border: 0; border-radius: 10px; }
+
+/* İLETİŞİM KUTUSU */
+.iletisim { max-width: 800px; margin: 40px auto; background-color: #ffffff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; }
+.iletisim h2 { color: #1E90FF; margin-bottom: 20px; }
+.iletisim p { margin: 5px 0; font-size: 16px; }
+.iletisim .social-icons { margin-bottom: 20px; }
+.iletisim .social-icons img { width: 36px; margin: 0 10px; vertical-align: middle; cursor: pointer; }
+.iletisim form { display: flex; flex-direction: column; gap: 12px; }
+.iletisim input, .iletisim textarea { padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+.iletisim button { background-color: #1E90FF; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 16px; cursor: pointer; transition: 0.3s; }
+.iletisim button:hover { background-color: #0A1F44; }
+
+/* FOOTER */
+footer { background-color: #0A1F44; color: white; display: flex; justify-content: space-between; padding: 15px 30px; font-size: 14px; flex-wrap: wrap; }
+footer span { opacity: 0.8; }
+
+@media (max-width: 768px) {
+    .ilan-container { flex-direction: column; align-items: center; }
+    header { flex-direction: column; }
+    nav { margin-top: 10px; }
+    .vitrin-wrapper { padding: 10px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo-section">
+        <img src="logo.png" alt="Nazar Gayrimenkul Logo">
+        <h1>Nazar Gayrimenkul</h1>
+    </div>
+    <nav>
+        <a href="#top">Ana Sayfa</a>
+        <a href="#iletisim">İletişim</a>
+        <span class="social-icons">
+            <a href="https://yatirimgayrimenkulllll.sahibinden.com/emlak" target="_blank"><img src="sahibinden.png" alt="Sahibinden"></a>
+            <a href="https://wa.me/905321728917" target="_blank"><img src="whatsapp.png" alt="WhatsApp"></a>
+            <a href="https://www.facebook.com/ahmet.pak.792?locale=_TR" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+            <a href="https://instagram.com/reel/DJEemCmIKZr/" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+        </span>
+    </nav>
+</header>
+
+<div id="top"></div>
+
+<h1 class="main-title">İLANLAR</h1>
+
+<div class="ilan-container">
+    <div class="ilan-box">
+        <h2>Satılık</h2>
+        <ul>
+            <li>Daire <span>- Konforlu şehir daireleri</span></li>
+            <li>Villa <span>- Özel bahçeli lüks villalar</span></li>
+            <li>Arsa <span>- Yatırım için uygun arsalar</span></li>
+            <li>Tarla <span>- Tarıma uygun geniş araziler</span></li>
+            <li>Dükkan <span>- Merkezi lokasyonlarda dükkan</span></li>
+            <li>Ofis-Büro <span>- Prestijli iş alanları</span></li>
+        </ul>
+    </div>
+    <div class="ilan-box">
+        <h2>Kiralık</h2>
+        <ul>
+            <li>Daire <span>- Şehir merkezinde kiralık daireler</span></li>
+            <li>Villa <span>- Bahçeli villa kiralama</span></li>
+            <li>Dükkan <span>- İşlek caddelerde dükkanlar</span></li>
+            <li>Ofis-Büro <span>- Modern ofis alanları</span></li>
+        </ul>
+    </div>
+    <div class="ilan-box">
+        <h2>Kat Karşılığı</h2>
+        <ul>
+            <li>Arsa <span>- İnşaat için uygun arsa</span></li>
+        </ul>
+    </div>
+</div>
+
+<div class="vitrin-wrapper">
+    <div class="vitrin-container">
+        <div class="vitrin-item"><img src="ilan1.jpg" alt="İlan 1"><p>Satılık Daire</p></div>
+        <div class="vitrin-item"><img src="ilan2.jpg" alt="İlan 2"><p>Satılık Villa</p></div>
+        <div class="vitrin-item"><img src="ilan3.jpg" alt="İlan 3"><p>Kiralık Daire</p></div>
+        <div class="vitrin-item"><img src="ilan4.jpg" alt="İlan 4"><p>Kiralık Dükkan</p></div>
+        <div class="vitrin-item"><img src="ilan5.jpg" alt="İlan 5"><p>Kat Karşılığı Arsa</p></div>
+        <div class="vitrin-item"><img src="ilan6.jpg" alt="İlan 6"><p>Satılık Daire</p></div>
+        <div class="vitrin-item"><img src="ilan7.jpg" alt="İlan 7"><p>Satılık Villa</p></div>
+        <div class="vitrin-item"><img src="ilan8.jpg" alt="İlan 8"><p>Kiralık Daire</p></div>
+        <div class="vitrin-item"><img src="ilan9.jpg" alt="İlan 9"><p>Kiralık Dükkan</p></div>
+        <div class="vitrin-item"><img src="ilan10.jpg" alt="İlan 10"><p>Kat Karşılığı Arsa</p></div>
+    </div>
+    <div class="vitrin-indicators">
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+        <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+    </div>
+</div>
+
+<div class="harita">
+    <iframe src="https://maps.google.com/maps?q=Çöplü%20Mah.%20Camikebir%203.%20Sok.%20No:13-A%20Çorum%20Merkez&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
+</div>
+
+<div class="iletisim" id="iletisim">
+    <h2>Bizimle İletişime Geçin</h2>
+    <p>Telefon 1: <a href="tel:+905321728917">0532 172 89 17</a></p>
+    <p>Telefon 2: <a href="tel:+905530463039">0553 046 3039</a></p>
+    <p>WhatsApp ile hemen yazın: 
+        <a href="https://wa.me/905321728917" target="_blank">0532 172 89 17</a> | 
+        <a href="https://wa.me/905530463039" target="_blank">0553 046 3039</a>
+    </p>
+    <p>Adres: Çöplü Mah. Camikebir 3. Sok. No:13-A Çorum/Merkez</p>
+    <div class="social-icons">
+        <a href="https://yatirimgayrimenkulllll.sahibinden.com/emlak" target="_blank"><img src="sahibinden.png" alt="Sahibinden"></a>
+        <a href="https://www.facebook.com/ahmet.pak.792?locale=_TR" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+        <a href="https://instagram.com/reel/DJEemCmIKZr/" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+        <a href="https://wa.me/905321728917" target="_blank"><img src="whatsapp.png" alt="WhatsApp"></a>
+    </div>
+    <form>
+        <input type="text" placeholder="Adınız Soyadınız">
+        <input type="email" placeholder="Email">
+        <textarea rows="4" placeholder="Mesajınız"></textarea>
+        <button type="submit">Gönder</button>
+    </form>
+</div>
+
+<footer>
+    <span>© Nazar Gayrimenkul 2025 Tüm hakları saklıdır.</span>
+    <span style="text-align:right;">zubeyirctr</span>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Sosyal ikon fallback: sadece sahibinden, WhatsApp, Facebook, Instagram
+    document.querySelectorAll('.social-icons a img').forEach(function(img) {
+        function replaceWithColoredIcon() {
+            var a = img.parentElement;
+            if (!a) return;
+            var alt = (img.getAttribute('alt') || '').toLowerCase();
+            var wrapper = document.createElement('span');
+            wrapper.style.display = 'inline-flex';
+            wrapper.style.alignItems = 'center';
+            wrapper.style.justifyContent = 'center';
+            wrapper.style.width = '28px';
+            wrapper.style.height = '28px';
+            wrapper.style.marginLeft = '12px';
+            var icon = document.createElement('i');
+            icon.setAttribute('aria-hidden','true');
+            if (alt.includes('whatsapp')) {
+                icon.className = 'fa-brands fa-whatsapp';
+                icon.style.color = '#25D366';
+            } else if (alt.includes('facebook')) {
+                icon.className = 'fa-brands fa-facebook-f';
+                icon.style.color = '#ffffff';
+                wrapper.style.background = '#1877F2';
+                wrapper.style.borderRadius = '50%';
+            } else if (alt.includes('instagram')) {
+                icon.className = 'fa-brands fa-instagram';
+                icon.style.color = '#ffffff';
+                wrapper.style.background = 'linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4)';
+                wrapper.style.borderRadius = '8px';
+            } else if (alt.includes('sahibinden')) {
+                icon.className = 'fa-solid fa-house';
+                icon.style.color = '#ffffff';
+                wrapper.style.background = '#FF6A00';
+                wrapper.style.borderRadius = '50%';
+            }
+            wrapper.appendChild(icon);
+            img.onerror = null;
+            if (a.contains(img)) a.replaceChild(wrapper, img);
+        }
+        img.addEventListener('error', replaceWithColoredIcon);
+        img.addEventListener('load', function() { if (img.naturalWidth === 0) replaceWithColoredIcon(); });
+        if (img.complete && img.naturalWidth === 0) replaceWithColoredIcon();
+    });
+
+    // Vitrin göstergeleri
+    var vitrin = document.querySelector('.vitrin-container');
+    if (vitrin) {
+        var items = vitrin.querySelectorAll('.vitrin-item');
+        var indicators = document.querySelectorAll('.vitrin-indicators span');
+        indicators.forEach(function(ind, idx) {
+            ind.style.cursor = 'pointer';
+            ind.addEventListener('click', function() {
+                if (items[idx]) {
+                    items[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                    indicators.forEach(function(d){ d.classList.remove('active'); });
+                    ind.classList.add('active');
+                }
+            });
+        });
+        if (indicators[0]) indicators[0].classList.add('active');
+    }
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
